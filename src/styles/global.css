@@ -1,1 +1,47 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .timeline-capsule::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: #8b572a33;
+  }
+  .timeline-capsule:last-child::after {
+    display: none;
+  }
+
+  .hero-pattern {
+    background-image: radial-gradient(#8b572a 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.1;
+  }
+
+  .glass-premium {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl;
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#8B4513];
+  }
+
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+}
+
+/* Custom Selection Color */
+::selection {
+  background: rgba(15, 90, 56, 0.2);
+  color: #0f5a38;
+}

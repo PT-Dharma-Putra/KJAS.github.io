@@ -1,0 +1,174 @@
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-background-light/80 backdrop-blur-md border-b border-primary/10"
+>
+  <div
+    class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-50 transition-all duration-300"
+    id="nav-container"
+  >
+    <div class="flex items-center gap-2">
+      <img
+        src="/images/logo-kjas.jpg"
+        alt="Logo KJAS"
+        class="h-12 w-auto object-contain"
+      />
+      <a href="/#home" class="flex flex-col leading-tight group">
+        <span
+          class="font-display text-lg md:text-xl font-bold text-slate-800 tracking-tight transition-all duration-300 group-hover:text-primary whitespace-nowrap"
+        >
+          Kartika Jaya
+        </span>
+        <span
+          class="font-sans text-[9px] md:text-[11px] font-semibold text-slate-500 uppercase tracking-[0.25em] -mt-1 transition-all duration-300 group-hover:text-primary/80 whitespace-nowrap"
+        >
+          Ananda Sejahtera
+        </span>
+      </a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-8">
+      <a
+        href="/#home"
+        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
+        >Home</a
+      >
+      <a
+        href="/#about"
+        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
+        >About Us</a
+      >
+      <a
+        href="/#services"
+        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
+        >Services</a
+      >
+      <a
+        href="/#product"
+        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
+        >Product</a
+      >
+      <a
+        href="/#project"
+        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
+        >Project</a
+      >
+      <a
+        href="https://wa.me/81128507788"
+        class="bg-primary text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-primary/90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+        >Contact Us</a
+      >
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-toggle" class="p-2 text-primary md:hidden">
+      <span class="material-icons-outlined">menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-background-light/98 backdrop-blur-2xl z-[100] transform translate-x-full transition-transform duration-500 md:hidden flex flex-col justify-center items-center gap-8"
+>
+  <button id="menu-close" class="absolute top-6 right-6 p-2 text-primary">
+    <span class="material-icons-outlined text-3xl">close</span>
+  </button>
+
+  <div class="flex flex-col items-center gap-8">
+    <a
+      href="/#home"
+      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      >Home</a
+    >
+    <a
+      href="/#about"
+      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      >About Us</a
+    >
+    <a
+      href="/#services"
+      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      >Services</a
+    >
+    <a
+      href="/#product"
+      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      >Product</a
+    >
+    <a
+      href="/#project"
+      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      >Project</a
+    >
+    <a
+      href="/#workflow"
+      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      >Work Flow</a
+    >
+    <a
+      href="/#contact"
+      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      >Contact Us</a
+    >
+  </div>
+</div>
+
+<script>
+  function initNav() {
+    const navbar = document.getElementById("navbar");
+    const navContainer = document.getElementById("nav-container");
+    const menuToggle = document.getElementById("menu-toggle");
+    const menuClose = document.getElementById("menu-close");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    // Scroll effect
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        navbar?.classList.add("glass-premium", "py-2");
+        navbar?.classList.remove(
+          "bg-background-light/80",
+          "border-b",
+          "border-primary/10",
+        );
+        navContainer?.classList.remove("py-4");
+        navContainer?.classList.add("py-1");
+      } else {
+        navbar?.classList.remove("glass-premium", "py-2");
+        navbar?.classList.add(
+          "bg-background-light/80",
+          "border-b",
+          "border-primary/10",
+        );
+        navContainer?.classList.remove("py-1");
+        navContainer?.classList.add("py-4");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+
+    function openMenu() {
+      mobileMenu?.classList.remove("translate-x-full");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+      mobileMenu?.classList.add("translate-x-full");
+      document.body.style.overflow = "";
+    }
+
+    menuToggle?.addEventListener("click", openMenu);
+    menuClose?.addEventListener("click", closeMenu);
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+
+  // Handle initialization on both standard load and Astro's view transitions if enabled
+  document.addEventListener("DOMContentLoaded", initNav);
+  document.addEventListener("astro:page-load", initNav);
+</script>

@@ -1,25 +1,45 @@
 ---
-import '../styles/global.css';
-// Component Imports
-import Button from '../components/Button.astro';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Service from "../components/Service.astro";
+import VisionMission from "../components/VisionMission.astro";
+import ProductShowcase from "../components/ProductShowcase.astro";
+import TrustReason from "../components/TrustReason.astro";
+import TrustFeatures from "../components/TrustFeatures.astro";
+import WorkProcess from "../components/WorkProcess.astro";
+import Project from "../components/Project.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
-
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-		</div>
-	</body>
-</html>
+<Layout title="KJAS Furniture | Luxury Earthy Elegance">
+  <Navbar />
+  <main class="pt-20">
+    <div class="reveal">
+      <Hero />
+    </div>
+    <div class="reveal section-padding">
+      <About />
+    </div>
+    <div class="reveal section-padding">
+      <Service />
+    </div>
+    <div class="reveal section-padding">
+      <VisionMission />
+    </div>
+    <div class="reveal section-padding">
+      <ProductShowcase />
+    </div>
+    <div class="reveal section-padding">
+      <Project />
+    </div>
+    <div class="reveal section-padding">
+      <WorkProcess />
+    </div>
+    <div class="reveal section-padding">
+      <TrustReason />
+    </div>
+  </main>
+  <Footer />
+</Layout>
